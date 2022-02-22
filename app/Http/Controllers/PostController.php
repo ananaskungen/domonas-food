@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\PostController;
+use App\Models\Post;
 use Illuminate\Http\Request;
+use Auth;
 
-class PostControllerController extends Controller
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +15,9 @@ class PostControllerController extends Controller
      */
     public function index()
     {
-        //
+        // 
+        $posts = Post::latest()->get();
+        return view('posts/index', ['posts' => $posts]);
     }
 
     /**
@@ -25,6 +28,7 @@ class PostControllerController extends Controller
     public function create()
     {
         //
+        return view('posts/create');
     }
 
     /**
@@ -36,6 +40,15 @@ class PostControllerController extends Controller
     public function store(Request $request)
     {
         //
+        $post = New Post;
+        $post->title = request('title');
+        $post->description = request('description');
+        $post->ingredience = request('ingredience');
+        $post->category = request('category');
+        $post->cookingtime = request('cookingtime');
+        $post->user_id = Auth::user()->id;
+        $post->save();
+        return redirect('/posts');
     }
 
     /**
@@ -44,9 +57,10 @@ class PostControllerController extends Controller
      * @param  \App\Models\PostController  $postController
      * @return \Illuminate\Http\Response
      */
-    public function show(PostController $postController)
+    public function show(Post $post)
     {
         //
+        return view('posts/show', ['post' => $post]);
     }
 
     /**

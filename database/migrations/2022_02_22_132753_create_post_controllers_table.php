@@ -13,8 +13,14 @@ class CreatePostControllersTable extends Migration
      */
     public function up()
     {
-        Schema::create('post_controllers', function (Blueprint $table) {
+        Schema::create('posts', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('description');
+            $table->string('ingredience');
+            $table->string('category');
+            $table->integer('cookingtime');
+            $table->foreignId('user_id')->references('id')->on('users'); 
             $table->timestamps();
         });
     }
@@ -26,6 +32,6 @@ class CreatePostControllersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('post_controllers');
+        Schema::dropIfExists('posts');
     }
 }
