@@ -16,8 +16,14 @@ class PostController extends Controller
     public function index()
     {
         // 
-        $posts = Post::latest()->get();
+   /*      $posts = Post::latest()->get();
         return view('posts/index', ['posts' => $posts]);
+ */
+        $posts = Post::all();
+
+		return view('posts/index', [
+			'posts' => $posts,
+		]);
     }
 
     /**
@@ -39,7 +45,6 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $post = New Post;
         $post->title = request('title');
         $post->description = request('description');
@@ -48,19 +53,21 @@ class PostController extends Controller
         $post->cookingtime = request('cookingtime');
         $post->user_id = Auth::user()->id;
         $post->save();
-        return redirect('/posts');
+        return redirect('/posts'); 
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\PostController  $postController
+     * @param  \App\Models\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function show(Post $post)
+    public function show($id)
     {
         //
-        return view('posts/show', ['post' => $post]);
+        $post = Post::find($id);
+
+        return view('posts.show')->with('post', $post);
     }
 
     /**
@@ -69,9 +76,12 @@ class PostController extends Controller
      * @param  \App\Models\PostController  $postController
      * @return \Illuminate\Http\Response
      */
-    public function edit(PostController $postController)
+    public function edit(Post $post)
     {
         //
+        return view('posts/edit', [
+            'post' => $post
+        ]);
     }
 
     /**
@@ -81,9 +91,22 @@ class PostController extends Controller
      * @param  \App\Models\PostController  $postController
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PostController $postController)
+    public function update(Request $request, Post $post)
     {
         //
+        $request->validate([
+            'title' => 'required',
+            'description' => 'required',
+            'ingredience' => 'required',
+            'category' => 'required',
+            'cookingtime' => 'required',
+        ]);
+
+        $post->update($request->all());
+
+        return redirect()
+            ->route('posts.show', ['post' => $post])
+            ->with('success', 'Post succesfully updated');
     }
 
     /**
