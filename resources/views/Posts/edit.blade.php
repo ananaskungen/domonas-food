@@ -14,22 +14,22 @@
 
         <div class="form-group">
             <label for="description">Description:</label>
-            <textarea name="description" cols="30" rows="10" class="form-control" placeholder="Description">{{ $post->description }}</textarea>
+            <textarea name="description" cols="30" rows="10" class="form-control" placeholder="{{ $post->description }}"></textarea>
         </div>
 
         <div class="form-group">
             <label for="ingredience">Ingredience:</label>
-            <textarea name="ingredience" cols="30" rows="10" class="form-control" placeholder="Ingredience">{{ $post->ingredience }}</textarea>
+            <input name="ingredience" cols="30" rows="10" class="form-control" placeholder="{{ $post->ingredience }}"></input>
         </div>
 
         <div class="form-group">
             <label for="category">Category:</label>
-            <textarea name="category" cols="30" rows="10" class="form-control" placeholder="Category">{{ $post->category }}</textarea>
+            <input name="category" cols="30" rows="10" class="form-control" placeholder="{{ $post->category }}"></input>
         </div>
 
         <div class="form-group">
             <label for="cookingtime">Cooking Time:</label>
-            <textarea name="cookingtime" cols="30" rows="10" class="form-control" placeholder="Cookingtime">{{ $post->cookingtime }}</textarea>
+            <input name="cookingtime" cols="30" rows="10" class="form-control" placeholder="{{ $post->cookingtime }}"></input>
         </div>
 
         <input type="submit" value="Submit">

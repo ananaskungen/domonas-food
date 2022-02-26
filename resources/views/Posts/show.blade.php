@@ -2,16 +2,22 @@
 
 @section('content')
 <div class="container">
-    <a href="/posts" class="btn btn-primary">Go Back</a>
     <h1>{{ $post->title }}</h1>
-    <p><strong>Description:</strong> {{ $post->description }}</p>
-    <p><strong>Ingrediences:</strong> {{ $post->ingredience }}</p>
-    <p><strong>Time:</strong> {{ $post->cookingtime }}</p>
-    <p><strong>Category:</strong> {{ $post->category }}</p>
-
+    <div>
+        <img src="" alt=""></img>
+        <p><strong>Description:</strong> {{ $post->description }}</p>
+    </div>
+    <div>
+        <img src="" alt=""></img>
+        <p><strong>Ingrediences:</strong> {{ $post->ingredience }}</p>
+        <p><strong>Time:</strong> {{ $post->cookingtime }}</p>
+        <p><strong>Category:</strong> {{ $post->category }}</p>
+    </div>
+    
     <br>
     <small>Written on {{ $post->created_at }}</small>
     <br>
     <span>Author: {{ $post->user->name }}</span>
+    <a href="/posts" class="btn btn-primary">Go Back</a>
 </div>
 @endsection

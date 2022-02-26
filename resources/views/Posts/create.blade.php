@@ -24,7 +24,7 @@
 
 				<div class="mb-3">
 					<label for="description" class="form-label">Description</label>
-					<input type="text" class="form-control" id="description" name="description" required>
+				  <textarea name="description" cols="30" rows="10" class="form-control" placeholder="Description"></textarea>
 				</div>
 
 				<div class="mb-3">
