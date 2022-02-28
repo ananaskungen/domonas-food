@@ -15,7 +15,7 @@
 
     <div class="btn-group d-flex justify-content-center">
       <div>
-        <!-- Check if post ID == user ID Button -->
+        
         @if($post->user_id == auth()->id())
 
           <a href="/posts/{{$post->id}}/edit" class="btn btn-primary">Edit</a>

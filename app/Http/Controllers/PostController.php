@@ -106,7 +106,7 @@ class PostController extends Controller
 
         return redirect()
             ->route('posts.show', ['post' => $post])
-            ->with('success', 'Post succesfully updated');
+            ->with('success', 'Working!');
     }
 
     /**
