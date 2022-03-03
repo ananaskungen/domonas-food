@@ -14,7 +14,7 @@
   <div>
 
     <div class="ms-5" class="col-4 d-flex justify-content-center">
-      <img src="https://www.thetranshotel.com/images/Y1WCKFz4BX_980x500.jpg" alt="Pakistani Buffe" width="200px" height="200px">
+<!--       <img src="https://www.thetranshotel.com/images/Y1WCKFz4BX_980x500.jpg" alt="Pakistani Buffe" width="200px" height="200px"> -->
       <h3><a href="/posts/{{$post->id}}">{{ $post->title }}</a></h3>
       <h3><p>{{ $post->description }}</p></h3>
     </div>
