@@ -2,7 +2,7 @@
 @section('content')
 <div class="container">
     <h1>{{ $post->title }}</h1>
-    <div class="d-flex justify-content-sm-center mb-1">
+    <div class="d-flex justify-content-sm-center mb-1 mt-5">
 
         <img class="me-5" id="myImg" src="/img/Alo-Ki-Tiki.jpg" alt="lite mat" width="400px">
 
@@ -23,9 +23,9 @@
        
     </div>
     <div class="d-flex justify-content-sm-center">
-        <div class="me-5">
+        <div class="me-5 mt-5">
             <p ><strong>Ingrediences:</strong> {{ $post->ingredience }}</p>
-            <p><strong>Time:</strong> {{ $post->cookingtime }}</p>
+            <p><strong>Time:</strong> {{ $post->cookingtime }} :min</p>
             <p><strong>Category:</strong> {{ $post->category }}</p>
         </div>
         <img class="ms-5" id="myImg-1" src="/img/Alo_Gosht_Shorba.jpg" alt="en annan maträtt"  width="400px">

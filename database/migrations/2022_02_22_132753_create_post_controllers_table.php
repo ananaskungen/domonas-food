@@ -16,7 +16,7 @@ class CreatePostControllersTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('description');
+            $table->text('description');
             $table->string('ingredience');
             $table->string('category');
             $table->integer('cookingtime');
