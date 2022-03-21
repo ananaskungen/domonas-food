@@ -25,6 +25,11 @@
         @if($post->user_id == auth()->id())
 
           <a href="/posts/{{$post->id}}/edit" class="btn btn-primary">Edit</a>
+          <form class="d-inline-block" method="POST" action="{{ route('posts.destroy', ['post' => $post]) }}">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-danger confirm">Delete Post</button>
+          </form>
           @endif
         </div>
       </div>
