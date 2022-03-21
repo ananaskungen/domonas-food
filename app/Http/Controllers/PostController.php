@@ -122,6 +122,6 @@ class PostController extends Controller
 
 		return redirect()
 			->route('posts.index')
-			->with('success', 'Project successfully deleted 😈.');
+			->with('success', 'Succesfully DELETED!');
     }
 }
