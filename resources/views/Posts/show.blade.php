@@ -1,52 +1,94 @@
 @extends('layouts.app')
 @section('content')
-<div class="container">
-    <h1>{{ $post->title }}</h1>
-    <div class="d-flex justify-content-sm-center mb-1 mt-5">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container pb50">
+    <div class="row">
+        <div class="col-md-9 mb40">
+            <article>
+                <img class="img-fluid mb30" id="myImg" src="/img/Alo-Ki-Tiki.jpg" alt="lite mat" width="800px">
+                <!-- The Modal -->
+                <div id="myModal" class="modal">
 
-        <img class="me-5" id="myImg" src="/img/Alo-Ki-Tiki.jpg" alt="lite mat" width="400px">
+                    <!-- The Close Button -->
+                    <span class="close">&times;</span>
 
-        <!-- Popup -->
-        <!-- The Modal -->
-            <div id="myModal" class="modal">
+                    <!-- Modal Content (The Image) -->
+                    <img class="modal-content" id="img01">
 
-            <!-- The Close Button -->
-            <span class="close">&times;</span>
+                    <!-- Modal Caption (Image Text) -->
+                    <div id="caption"></div>
+                </div>
+             
+                <div class="post-content">
+                <h3>{{ $post->title }}</h3>
+                    <ul class="post-meta list-inline">
+                        <li class="list-inline-item">
+                            <i class="fa fa-user-circle-o"></i> <a href="#">{{ $post->user->name }}</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <i class="fa fa-calendar-o"></i> <a href="#">{{ $post->created_at }}</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <i class="fa fa-tags"></i> <a href="#">{{ $post->category }}</a>
+                        </li>
+                    </ul>
+                    <p class="lead">{{ $post->description }} </p>
+                    <div class="me-5 mt-1">
+                        <p ><strong>Ingrediences:</strong> {{ $post->ingredience }}</p>
+                        <p><strong>Time:</strong> {{ $post->cookingtime }} :min</p>
+                    </div>
+                    <ul class="list-inline share-buttons">
+                        <li class="list-inline-item">Share Post:</li>
+                        <li class="list-inline-item">
+                            <a href="#" class="social-icon-sm si-dark si-colored-facebook si-gray-round">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#" class="social-icon-sm si-dark si-colored-twitter si-gray-round">
+                                <i class="fa fa-twitter"></i>                       
+                            </a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#" class="social-icon-sm si-dark si-colored-linkedin si-gray-round">
+                                <i class="fa fa-linkedin"></i>                  
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <a href="/posts" class="btn btn-primary mb-5">Go Back</a>
+            </article>
+            <!-- post article-->
 
-            <!-- Modal Content (The Image) -->
-            <img class="modal-content" id="img01">
-
-            <!-- Modal Caption (Image Text) -->
-            <div id="caption"></div>
-            </div>
-        <p class="ms-5"><strong>Description:</strong> {{ $post->description }}</p>
-       
-    </div>
-    <div class="d-flex justify-content-sm-center">
-        <div class="me-5 mt-5">
-            <p ><strong>Ingrediences:</strong> {{ $post->ingredience }}</p>
-            <p><strong>Time:</strong> {{ $post->cookingtime }} :min</p>
-            <p><strong>Category:</strong> {{ $post->category }}</p>
         </div>
-        <img class="ms-5" id="myImg-1" src="/img/Alo_Gosht_Shorba.jpg" alt="en annan maträtt"  width="400px">
-                    <!-- The Modal -->
-            <div id="myModal-1" class="modal-1">
+        <div class="col-md-3 mb40">
 
-                <!-- The Close Button -->
-                <span class="close-1">&times;</span>
-
-                <!-- Modal Content (The Image) -->
-                <img class="modal-content-1" id="img02">
-
-                <!-- Modal Caption (Image Text) -->
-                <div id="caption-1"></div>
+            <!--/col-->
+            <div class="mb40">
+                <h4 class="sidebar-title">Categories</h4>
+                @foreach($posts as $category)
+                <ul class="list-unstyled categories">
+                    <li><a href="#">{{ $category->category }}</a></li>
+                    
+                </ul>
+                @endforeach
             </div>
+            <!--/col-->
+            <div>
+                <h4 class="sidebar-title">Latest News</h4>
+                @foreach($posts as $userpost)
+                
+                    <ul class="list-unstyled">
+                        <li class="media">
+                            <img class="d-flex mr-3 img-fluid" width="64" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/User-avatar.svg/1024px-User-avatar.svg.png" alt="Generic placeholder image">
+                            <div class="media-body">
+                                <h5 class="mt-0 mb-1"><a href="/posts/{{$userpost->id}}">{{ $userpost->title }}</a></h5> {{ $userpost->created_at }}
+                            </div>
+                        </li>
+                    </ul>
+                @endforeach
+            </div>
+        </div>
     </div>
-    
-    <br>
-    <small>Written on {{ $post->created_at }}</small>
-    <br>
-    <span>Author: {{ $post->user->name }}</span>
-    <a href="/posts" class="btn btn-primary">Go Back</a>
 </div>
 @endsection
